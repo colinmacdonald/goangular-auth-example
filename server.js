@@ -21,7 +21,7 @@ app.configure(function() {
   app.use(express.static(path.join(__dirname, 'static')));
 });
 
-app.all('/', function(req, res) {
+app.all('*', function(req, res) {
   res.render('index.ejs', {
     connectUrl: process.env.GOINSTANT_CONNECT_URL || CONNECT_URL
   });

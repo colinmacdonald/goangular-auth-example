@@ -70,6 +70,8 @@ app.controller('mainCtrl',
     $scope.users = $goUsers();
     $scope.users.$self();
 
+    $scope.ready = false;
+
     $goConnection.$ready().then(function() {
       $scope.$on('$routeChangeStart', routeAuthorized);
 
@@ -83,6 +85,8 @@ app.controller('mainCtrl',
       }
 
       routeAuthorized();
+
+      $scope.ready = true;
     });
   }
 );
