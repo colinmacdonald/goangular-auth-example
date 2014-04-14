@@ -65,7 +65,7 @@ app.factory('permissions', function ($goConnection) {
 });
 
 app.controller('mainCtrl',
-  function($scope, $route, $location, $goConnection, $goUsers, permissions) {
+  function($scope, $timeout, $route, $location, $goConnection, $goUsers, permissions) {
     $scope.conn = $goConnection;
     $scope.users = $goUsers();
     $scope.users.$self();
@@ -73,6 +73,7 @@ app.controller('mainCtrl',
     $scope.ready = false;
 
     $goConnection.$ready().then(function() {
+      $timeout(function() {
       $scope.$on('$routeChangeStart', routeAuthorized);
 
       function routeAuthorized(scope, next) {
@@ -87,6 +88,7 @@ app.controller('mainCtrl',
       routeAuthorized();
 
       $scope.ready = true;
+      }, 5000);
     });
   }
 );
