@@ -5,8 +5,10 @@
 
 var app = angular.module('auth', ['ngRoute', 'goangular']);
 
-app.config(['$routeProvider', '$goConnectionProvider',
-  function($routeProvider, $goConnectionProvider) {
+app.config(['$routeProvider', '$locationProvider', '$goConnectionProvider',
+  function($routeProvider, $locationProvider, $goConnectionProvider) {
+    $locationProvider.html5Mode(true).hashPrefix('!');
+
     var url = window.connectUrl;
     var origin = window.location.origin;
     var path = window.location.pathname;
@@ -68,6 +70,8 @@ app.controller('mainCtrl',
     $scope.users = $goUsers();
     $scope.users.$self();
 
+    $scope.ready = false;
+
     $goConnection.$ready().then(function() {
       $scope.$on('$routeChangeStart', routeAuthorized);
 
@@ -77,10 +81,22 @@ app.controller('mainCtrl',
 
         if (accessLevel && !permissions.authorized(accessLevel)) {
           $location.path('/restricted');
+
+          return false;
         }
+
+        return true;
       }
 
-      routeAuthorized();
+      var access = routeAuthorized();
+
+      if (access) {
+        $scope.ready = true;
+      } else {
+        $scope.$on('$routeChangeSuccess', function() {
+          $scope.ready = true;
+        });
+      }
     });
   }
 );

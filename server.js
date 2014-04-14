@@ -3,7 +3,7 @@ var express = require('express');
 var path = require('path');
 var http = require('http');
 
-var CONNECT_URL = 'https://goinstant.net/cmac/app';
+var CONNECT_URL = 'YOUR_CONNECT_URL';
 
 var app = express();
 
@@ -21,7 +21,7 @@ app.configure(function() {
   app.use(express.static(path.join(__dirname, 'static')));
 });
 
-app.all('/', function(req, res) {
+app.all('*', function(req, res) {
   res.render('index.ejs', {
     connectUrl: process.env.GOINSTANT_CONNECT_URL || CONNECT_URL
   });

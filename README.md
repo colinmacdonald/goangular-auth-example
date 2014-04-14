@@ -2,6 +2,9 @@
 
 An example app using GoAngular to define routes with access permissions based on the connected GoInstant user.
 
+ - [Tutorial](https://developers.goinstant.com/v1/GoAngular/examples/auth.html)
+ - [Live Demo](http://goangular-auth-example.herokuapp.com)
+
 ### Setup
 
 #### GoInstant
@@ -17,7 +20,7 @@ An example app using GoAngular to define routes with access permissions based on
 
 - `npm install`
 
-### Run
+#### Run
 
 - `npm start`
 - `open http://localhost:5000`

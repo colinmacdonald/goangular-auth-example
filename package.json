@@ -1,12 +1,11 @@
 {
   "name": "goangular-auth-example",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "An example app using GoAngular to define routes with access permissions based on the connected GoInstant user.",
   "main": "index.html",
   "scripts": {
     "start": "node server.js",
-    "preinstall": "npm install -g bower",
-    "postinstall": "bower install"
+    "postinstall": "node_modules/bower/bin/bower install"
   },
   "repository": {
     "type": "git",
@@ -25,6 +24,7 @@
   "homepage": "https://github.com/colinmacdonald/goangular-auth-example",
   "dependencies": {
     "express": "~3.4.8",
-    "ejs": ""
+    "ejs": "",
+    "bower": "1.3.2"
   }
 }

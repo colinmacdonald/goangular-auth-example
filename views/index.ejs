@@ -3,6 +3,7 @@
   <head>
     <title>GoInstant GoAngular Auth Example</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <base href="/">
 
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="css/styles.css" />
@@ -12,12 +13,12 @@
       <div class="navbar navbar-default navbar-static-top">
         <div ng-show="users.$local.id" class="container">
           <div class="navbar-header">
-            <a class="navbar-brand" href="http://goinstant.com">GoInstant Auth Example</a>
+            <a class="navbar-brand" href="https://developers.goinstant.com/v1/GoAngular/examples/auth.html">GoInstant Auth Example</a>
           </div>
           <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-              <li><a href="#/">Home</a></li>
-              <li><a access="authenticated" href="#profile">Profile</a></li>
+              <li><a href="/">Home</a></li>
+              <li><a access="authenticated" href="/profile">Profile</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
               <li ng-show="conn.isGuest"><p class="navbar-text">Sign in with: </p></li>
@@ -34,7 +35,7 @@
         <div class="jumbotron">
           <p>This is an example app demonstrating GoAngular's users and authentication features.</p>
         </div>
-        <div ng-view></div>
+        <div ng-show="ready" ng-view></div>
       </div>
     </div>
 
