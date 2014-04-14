@@ -1,20 +1,13 @@
 /* jshint browser: true */
 /* global angular */
 
-/**
- * @fileOverview
- *
- * This file contains an example, only designed for use during development
- */
-
 'use strict';
 
-// Create an AngularJS application module
 var app = angular.module('auth', ['ngRoute', 'goangular']);
 
 app.config(['$routeProvider', '$goConnectionProvider',
   function($routeProvider, $goConnectionProvider) {
-    var url = window.connectUrl || 'YOUR_CONNECT_URL';
+    var url = window.connectUrl;
     var origin = window.location.origin;
     var path = window.location.pathname;
     var returnTo = origin + path;
@@ -26,16 +19,16 @@ app.config(['$routeProvider', '$goConnectionProvider',
 
     $routeProvider
       .when('/', {
-        templateUrl: 'views/home.html',
+        templateUrl: 'templates/home.html',
         controller: 'homeCtrl'
       })
       .when('/profile', {
-        templateUrl: 'views/profile.html',
+        templateUrl: 'templates/profile.html',
         controller: 'profileCtrl',
         access: 'authenticated'
       })
       .when('/restricted', {
-        templateUrl: 'views/restricted.html',
+        templateUrl: 'templates/restricted.html',
         controller: 'restrictedCtrl'
       })
       .otherwise({
