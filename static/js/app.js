@@ -5,8 +5,10 @@
 
 var app = angular.module('auth', ['ngRoute', 'goangular']);
 
-app.config(['$routeProvider', '$goConnectionProvider',
-  function($routeProvider, $goConnectionProvider) {
+app.config(['$routeProvider', '$locationProvider', '$goConnectionProvider',
+  function($routeProvider, $locationProvider, $goConnectionProvider) {
+    $locationProvider.html5Mode(true).hashPrefix('!');
+
     var url = window.connectUrl;
     var origin = window.location.origin;
     var path = window.location.pathname;
